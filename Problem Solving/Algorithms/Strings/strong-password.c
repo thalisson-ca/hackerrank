@@ -15,13 +15,32 @@ char* readline();
 // Complete the minimumNumber function below.
 int minimumNumber(int n, char* password) {
     // Return the minimum number of characters to make the password strong
+	
+	/*[THA]
+	* The first thing to check is the password length, because if the word needs 4 letter
+	* or more, you don't need to check the others conditions, since the others condition may already
+	* be include in this +4 letters
+	*/
     int result = 6-n;
+		
+	/*[THA]
+	* Others cases are false until proven otherwise 
+	*/
     bool isThereDigit = false;
     bool isThereLowerCase = false;
     bool isThereUpperCase = false;
     bool isThereSpecialCase = false;
     
-    if(result<4){
+	/*[THA]
+	* If the word neeeds more then 4, we already have the final result
+	*/
+    if(result<4){ 
+	    
+	    /*[THA]
+		* For each character in the string check if it is a digit, Upper case character,
+		* Lower case character or a special character. I have choosed C because it is simple
+		* to compare the characters by intervals here. If it is a match, you mark what it is here.
+		*/
         for(int i=0;i<n;i++){
             if(password[i]>='0' && password[i]<='9'){
                 isThereDigit = true;
@@ -44,6 +63,10 @@ int minimumNumber(int n, char* password) {
                 isThereSpecialCase = true;
             }
         }
+		
+		/*[THA]
+		* Now, we count the conditions that is satisfied.
+		*/
         int contCond = 4;
         if(isThereDigit){
             contCond--;
@@ -58,6 +81,10 @@ int minimumNumber(int n, char* password) {
             contCond--;
         }
         
+		/*[THA]
+		* If the conditions that fails is more then the missing character, so the final result is
+		* the number of failed conditions
+		*/
         if(contCond>result){
             result = contCond;
         }
