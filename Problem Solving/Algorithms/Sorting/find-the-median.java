@@ -11,7 +11,7 @@ import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 class Result {
-	//Find the Median
+	//Find the Median 
 	//https://www.hackerrank.com/challenges/find-the-median/problem
     /*
      * Complete the 'findMedian' function below.
